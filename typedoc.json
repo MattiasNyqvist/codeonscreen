@@ -1,0 +1,19 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "name": "Code On Screen",
+  "entryPoints": ["src"],
+  "entryPointStrategy": "expand",
+  "exclude": ["**/*.test.ts", "src/main.tsx", "src/vite-env.d.ts"],
+  "out": "docs/api",
+  "readme": "README.md",
+  "excludePrivate": true,
+  "categorizeByGroup": true,
+  "validation": {
+    "notExported": true,
+    "invalidLink": true,
+    "notDocumented": true
+  },
+  "requiredToBeDocumented": ["Enum", "Class", "Interface", "Function", "Method", "Variable", "TypeAlias", "Accessor"],
+  "treatWarningsAsErrors": true,
+  "excludeExternals": true
+}
