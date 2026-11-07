@@ -1,0 +1,28 @@
+# Runs the full check (types, lint, formatting, docs, tests) on every push and pull request.
+# It does not deploy anything: the site is built and published by Coolify on the VPS.
+# Actions are pinned to exact commits; the comment shows the version.
+name: Check
+
+on:
+  push:
+  pull_request:
+
+# The token may only read the repo.
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Set up Node
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
+        with:
+          node-version: lts/*
+          cache: 'npm'
+      - name: Install dependencies
+        run: npm ci
+      - name: Check
+        run: npm run check
